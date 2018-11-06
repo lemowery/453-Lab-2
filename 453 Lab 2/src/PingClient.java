@@ -13,18 +13,18 @@ public class PingClient {
     int drops = 0;
     int retPacket;
     
-    if (/*?*/) {  // check if number of arguments are correct
+    if (args.length != 2) {  // check if number of arguments are correct
       System.out.println("Required arguments: host port");   
       return;   
     }   
-    //String server = ?;   // Read first argument from user 
-    //String serport = ? // Read second argument from user
+    String server = args[0];   // Read first argument from user 
+    String serport = args[1]; // Read second argument from user
     int serverPort = Integer.parseInt(serport);   
     
-    //DatagramSocket socket = ?; // Create new datagram socket
-    //?; // Set socket timeout value. Read API for DatagramSocket to do this
+    DatagramSocket socket = new DatagramSocket(serverPort); // Create new datagram socket
+    socket.setSoTimeout(1000);; // Set socket timeout value. Read API for DatagramSocket to do this
 
-    //InetAddress serverAddress = ?; //Convert server to InetAddress format; Check InetAddress API for this
+    InetAddress serverAddress = InetAddress.getByName(server); //Convert server to InetAddress format; Check InetAddress API for this
     byte[] sendData = new byte[1024];   
     byte[] receiveData = new byte[1024];   
     
