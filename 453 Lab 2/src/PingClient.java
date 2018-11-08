@@ -54,16 +54,15 @@ public static void main(String[] args)throws Exception {
     			System.out.println();
     		}
     		else {
-    			System.out.println("Received from " + reply.getAddress().getHostAddress() + " ," + new String(line)); 
-    			System.out.println();
-    			long rtt = System.currentTimeMillis() - Integer.parseInt(data[2]);  // calculate roundtrip time
+    			System.out.println("Received from " + reply.getAddress().getHostAddress() + " , " + new String(line) + "\n"); 
+    			long rtt = System.currentTimeMillis() - Long.parseLong(data[2]);  // calculate roundtrip time
           
     			// calculate total, max and min rtt
     			totalrtt += rtt;
     			if(rtt < minrtt) {
     				minrtt = rtt;
     			}
-    			if(rtt > rtt) {
+    			if(rtt > maxrtt) {
     				maxrtt = rtt;
     			}
     		}        
