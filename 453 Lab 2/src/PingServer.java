@@ -51,7 +51,7 @@ public class PingServer
          InetAddress clientHost = request.getAddress();
          int clientPort = request.getPort();
          byte[] buf = request.getData();
-         DatagramPacket reply = new DatagramPacket(buf, buf.length);
+         DatagramPacket reply = new DatagramPacket(buf, buf.length, clientHost, clientPort);
          socket.send(reply);
 
          System.out.println("   Reply sent.");

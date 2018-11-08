@@ -20,7 +20,7 @@ public static void main(String[] args)throws Exception {
     String serport = args[1]; // Read second argument from user
     int serverPort = Integer.parseInt(serport);   
     
-    DatagramSocket socket = new DatagramSocket(serverPort); // Create new datagram socket
+    DatagramSocket socket = new DatagramSocket(); // Create new datagram socket
     socket.setSoTimeout(1000);; // Set socket timeout value. Read API for DatagramSocket to do this
 
     InetAddress serverAddress = InetAddress.getByName(server); //Convert server to InetAddress format; Check InetAddress API for this
@@ -31,7 +31,7 @@ public static void main(String[] args)throws Exception {
     	Long time = new Long(System.currentTimeMillis());
     	String payload = "PING " + i + " " + time + " " + "\r\n"; // Construct data payload for PING as per the instructions
     	sendData = payload.getBytes(); // Convert payload into bytes
-    	DatagramPacket packet = new DatagramPacket(sendData, sendData.length);    // Create new datagram packet
+    	DatagramPacket packet = new DatagramPacket(sendData, sendData.length, serverAddress, serverPort);    // Create new datagram packet
     	socket.send(packet); // send packet
     	DatagramPacket reply = new DatagramPacket(new byte[1024], 1024); // Create datagram packet for reply
     	
